@@ -1,15 +1,9 @@
 import flask
 import logging
 from logging.handlers import RotatingFileHandler
-import category_encoders
-import numpy as np
-import pickle
-import pandas as pd
 
 from data.models import Salary
 from predict_models.salary_model import SalaryModel
-
-# from salary_model import salary_model
 
 salary_model = SalaryModel()
 
@@ -30,9 +24,10 @@ def get_car_price():
     if not request_data:
         app.logger.info(f"Request: {flask.request.method} {flask.request.url} - No data provided in the request body")
         return flask.jsonify({'error': 'No data provided in the request body'}), 400
-
+    print(request_data)
     salary = Salary.from_json(request_data)
-    salary_predict_value = salary_model.predict(salary)
+    print(salary)
+    salary_predict_value = salary_model.predict(salary)[0]
 
     response = flask.jsonify({'salary': str(salary_predict_value)})
     response.headers.add('Access-Control-Allow-Origin', '*')

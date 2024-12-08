@@ -38,7 +38,7 @@ class Salary:
             education=json_data.get('educationLevel', ""),
             experience=float(json_data.get('yearsOfExperience', 0)),
             location=json_data.get("location", ""),
-            salary=json_data.get('salary', "")
+            salary=json_data.get('salary', 0)
         )
 
     def __str__(self):
