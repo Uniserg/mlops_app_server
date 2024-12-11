@@ -4,8 +4,10 @@ from logging.handlers import RotatingFileHandler
 
 from data.models import Salary
 from predict_models.salary_model import SalaryModel
+# from predict_models.custom_salary_model import CustomSalaryModel
 
 salary_model = SalaryModel()
+# salary_model = CustomSalaryModel()
 
 app = flask.Flask(__name__)
 
